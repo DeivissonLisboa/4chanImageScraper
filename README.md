@@ -13,4 +13,4 @@ Single thread link:
 
 Batch file:
 
-	python3 4chan_image_scraper.py batch path/to/batch,json
+	python3 4chan_image_scraper.py batch path/to/batch.json
