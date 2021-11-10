@@ -8,7 +8,11 @@ def scraper(threadlink):
     soup = BeautifulSoup(r.content, "lxml")
 
     classsubject = soup.find_all("span", {"class": "subject"})[0]
-    threadname = classsubject.string or f'thread {threadlink.split("/")[-1]}'
+    threadname = (
+        "".join([i for i in classsubject.string if i != "/"])
+        if classsubject.string
+        else f'thread {threadlink.split("/")[-1]}'
+    )
     folderpath = os.path.join(os.getcwd(), threadname)
     try:
         os.mkdir(folderpath)
