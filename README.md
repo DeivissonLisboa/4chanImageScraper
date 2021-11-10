@@ -1,4 +1,4 @@
-4chan Image Scraper
+4chan Scraper
 ===================
 
 Requirements
