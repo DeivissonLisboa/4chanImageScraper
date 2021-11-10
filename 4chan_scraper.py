@@ -10,7 +10,10 @@ def scraper(threadlink):
     classsubject = soup.find_all("span", {"class": "subject"})[0]
     threadname = classsubject.string or f'thread {threadlink.split("/")[-1]}'
     folderpath = os.path.join(os.getcwd(), threadname)
-    os.mkdir(folderpath)
+    try:
+        os.mkdir(folderpath)
+    except FileExistsError:
+        pass
 
     imgsrc = soup.find_all("a", {"class": "fileThumb"}, href=True)
     imgsrclist = [img["href"] for img in imgsrc]
